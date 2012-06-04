@@ -1,11 +1,11 @@
-%global git b86397a
+%global git 5c61d80
 %global uuid weather@gnome-shell-extensions.gnome.org
 %global github Neroth-gnome-shell-extension-weather
 %global checkout git%{git}
 
 Name:           gnome-shell-extension-weather
 Version:        0
-Release:        0.1.%{checkout}%{?dist}
+Release:        0.2.%{checkout}%{?dist}
 Summary:        An extension for displaying weather notifications in GNOME Shell
 
 Group:          User Interface/Desktops
@@ -24,6 +24,7 @@ including forecast for today and tomorrow is fetched from Yahoo! Weather.
 
 %prep
 %setup -q -n %{github}-%{git}
+rm -rf debian
 
 %build
 ./autogen.sh --prefix=/usr
@@ -49,5 +50,9 @@ fi
 %{_datadir}/gnome-shell/extensions/%{uuid}/
 
 %changelog
+* Mon Jun 04 2012 Mattia Meneguzzo <odysseus@fedoraproject.org> - 0-0.2.git5c61d80
+- Update to latest upstream version
+- Add command to remove directory "debian"
+
 * Wed May 30 2012 Mattia Meneguzzo <odysseus@fedoraproject.org> - 0-0.1.gitb86397a
 - Initial package for Fedora
