@@ -5,7 +5,7 @@
 
 Name:           gnome-shell-extension-weather
 Version:        0
-Release:        0.4.%{checkout}%{?dist}
+Release:        0.5.%{checkout}%{?dist}
 Summary:        An extension for displaying weather notifications in GNOME Shell
 
 Group:          User Interface/Desktops
@@ -27,7 +27,8 @@ including forecast for today and tomorrow is fetched from Yahoo! Weather.
 rm -rf debian
 
 %build
-./autogen.sh --prefix=/usr
+NOCONFIGURE=1 ./autogen.sh
+%configure --prefix=%{_prefix}
 make %{?_smp_mflags}
 
 %install
@@ -50,6 +51,9 @@ fi
 %{_datadir}/gnome-shell/extensions/%{uuid}/
 
 %changelog
+* Sun Aug 19 2012 Mattia Meneguzzo <odysseus@fedoraproject.org> - 0-0.5.gitb9358f2
+- Correct spec file
+
 * Sat Aug 18 2012 Mattia Meneguzzo <odysseus@fedoraproject.org> - 0-0.4.gitb9358f2
 - Update to latest upstream version
 
