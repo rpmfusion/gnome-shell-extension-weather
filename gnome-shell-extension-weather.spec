@@ -1,11 +1,11 @@
-%global git b9358f2
+%global git 5be82f2
 %global uuid weather@gnome-shell-extensions.gnome.org
 %global github Neroth-gnome-shell-extension-weather
 %global checkout git%{git}
 
 Name:           gnome-shell-extension-weather
 Version:        0
-Release:        0.5.%{checkout}%{?dist}
+Release:        0.6.%{checkout}%{?dist}
 Summary:        An extension for displaying weather notifications in GNOME Shell
 
 Group:          User Interface/Desktops
@@ -51,6 +51,9 @@ fi
 %{_datadir}/gnome-shell/extensions/%{uuid}/
 
 %changelog
+* Sat Aug 25 2012 Mattia Meneguzzo <odysseus@fedoraproject.org> - 0-0.6.git5be82f2
+- Update to latest upstream version
+
 * Sun Aug 19 2012 Mattia Meneguzzo <odysseus@fedoraproject.org> - 0-0.5.gitb9358f2
 - Correct spec file
 
