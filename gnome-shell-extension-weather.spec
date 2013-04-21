@@ -1,11 +1,11 @@
-%global git f4fa5d1
-%global uuid weather@gnome-shell-extensions.gnome.org
+%global git 1f8dfbf
+%global uuid weather-extension@xeked.com
 %global github Neroth-gnome-shell-extension-weather
 %global checkout git%{git}
 
 Name:           gnome-shell-extension-weather
 Version:        0
-Release:        0.11.%{checkout}%{?dist}
+Release:        0.12.%{checkout}%{?dist}
 Summary:        An extension for displaying weather notifications in GNOME Shell
 
 Group:          User Interface/Desktops
@@ -14,7 +14,7 @@ URL:            https://github.com/Neroth/gnome-shell-extension-weather
 Source0:        https://github.com/Neroth/gnome-shell-extension-weather/tarball/master/%{github}-%{git}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  autoconf >= 2.53, automake >= 1.9, desktop-file-utils, glib2-devel, gnome-common >= 3.4.0, intltool >= 0.25
+BuildRequires:  autoconf >= 2.53, automake >= 1.9, glib2-devel, gnome-common >= 3.4.0, intltool >= 0.25
 Requires:       gnome-shell >= 3.4.0
 
 %description
@@ -34,7 +34,6 @@ make %{?_smp_mflags}
 %install
 make install DESTDIR=%{buildroot}
 %find_lang %{name}
-desktop-file-install --add-category="GNOME" --remove-category="System" --delete-original --dir=%{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/weather-settings.desktop
 
 %postun
 if [ $1 -eq 0 ] ; then
@@ -45,12 +44,15 @@ fi
 %{_bindir}/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 
 %files -f %{name}.lang
-%doc AUTHORS COPYING NEWS README
-%{_datadir}/applications/weather-settings.desktop
+%doc AUTHORS COPYING README.md
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.weather.gschema.xml
 %{_datadir}/gnome-shell/extensions/%{uuid}/
 
 %changelog
+* Sun Apr 21 2013 Mattia Meneguzzo <odysseus@fedoraproject.org> - 0-0.12.git1f8dfbf
+- Update to latest upstream version
+- Update ".spec" file
+
 * Sat Jan 12 2013 Mattia Meneguzzo <odysseus@fedoraproject.org> - 0-0.11.gitf4fa5d1
 - Update to latest upstream version
 - Update requirements
