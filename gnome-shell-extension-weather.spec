@@ -1,11 +1,11 @@
-%global git 1f8dfbf
+%global git 7587e23
 %global uuid weather-extension@xeked.com
 %global github Neroth-gnome-shell-extension-weather
 %global checkout git%{git}
 
 Name:           gnome-shell-extension-weather
 Version:        0
-Release:        0.12.%{checkout}%{?dist}
+Release:        0.13.%{checkout}%{?dist}
 Summary:        An extension for displaying weather notifications in GNOME Shell
 
 Group:          User Interface/Desktops
@@ -14,17 +14,15 @@ URL:            https://github.com/Neroth/gnome-shell-extension-weather
 Source0:        https://github.com/Neroth/gnome-shell-extension-weather/tarball/master/%{github}-%{git}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  autoconf >= 2.53, automake >= 1.9, glib2-devel, gnome-common >= 3.4.0, intltool >= 0.25
-Requires:       gnome-shell >= 3.4.0
+BuildRequires:  autoconf >= 2.53, automake >= 1.9, glib2-devel, gnome-common >= 3.7.0, intltool >= 0.25
+Requires:       gnome-shell >= 3.8.0
 
 %description
 gnome-shell-extension-weather is a simple extension for displaying weather 
-informations from several cities in GNOME Shell. Currently, the weather report 
-including forecast for today and tomorrow is fetched from Yahoo! Weather.
+informations from several cities in GNOME Shell.
 
 %prep
 %setup -q -n %{github}-%{git}
-rm -rf debian
 
 %build
 NOCONFIGURE=1 ./autogen.sh
@@ -49,6 +47,10 @@ fi
 %{_datadir}/gnome-shell/extensions/%{uuid}/
 
 %changelog
+* Tue Oct 29 2013 Mattia Meneguzzo <odysseus@fedoraproject.org> - 0-0.13.git7587e23
+- Update to latest upstream version (compatible with Gnome >= 3.8)
+- Update requirements (at least version 3.8 of Gnome Shell is required)
+
 * Sun Apr 21 2013 Mattia Meneguzzo <odysseus@fedoraproject.org> - 0-0.12.git1f8dfbf
 - Update to latest upstream version
 - Update ".spec" file
