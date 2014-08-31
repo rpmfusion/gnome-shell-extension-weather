@@ -5,7 +5,7 @@
 
 Name:           gnome-shell-extension-weather
 Version:        0
-Release:        0.13.%{checkout}%{?dist}
+Release:        0.14.%{checkout}%{?dist}
 Summary:        An extension for displaying weather notifications in GNOME Shell
 
 Group:          User Interface/Desktops
@@ -47,6 +47,9 @@ fi
 %{_datadir}/gnome-shell/extensions/%{uuid}/
 
 %changelog
+* Sun Aug 31 2014 Sérgio Basto <sergio@serjux.com> - 0-0.14.git7587e23
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
 * Tue Oct 29 2013 Mattia Meneguzzo <odysseus@fedoraproject.org> - 0-0.13.git7587e23
 - Update to latest upstream version (compatible with Gnome >= 3.8)
 - Update requirements (at least version 3.8 of Gnome Shell is required)
